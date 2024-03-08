@@ -1,0 +1,30 @@
+<div class="p-3">
+  <h1 mat-dialog-title *ngIf="isNew">Add Product</h1>
+  <h1 mat-dialog-title *ngIf="!isNew">Edit Product</h1>
+
+  <div [formGroup]="productForm" class="col">
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="Name" required>
+      <mat-error *ngIf="nameError">Name is required.</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div [formGroup]="productForm" class="col">
+    <mat-form-field>
+      <input matInput formControlName="price" placeholder="Price" type="number" required>
+      <mat-error *ngIf="priceError">Price is required.</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div [formGroup]="productForm" class="col">
+    <mat-form-field>
+      <input matInput formControlName="description" placeholder=" Description" required>
+      <mat-error *ngIf="priceError">Price is required.</mat-error>
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button color="primary" (click)="onSave()" [disabled]="nameError || priceError">
+    Save
+  </button>
+  <button mat-button (click)="onCancel()">Cancel</button>
+</div>
